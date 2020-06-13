@@ -8,5 +8,7 @@ vacancies = db.vacancy
 
 user_input = int(input('Введите желаемую зарплату '))
 
-for vacancy in vacancies.find({'salary_min': {'$gt': user_input}, '$or': [{'salary_max': {'$gt': user_input}}]}):
+for vacancy in vacancies.find({'$or': [{'salary_min': {'$gt': user_input}}, {'salary_max': {'$gt': user_input}}]}):
     pprint(vacancy)
+
+vacancies.delete_many({})

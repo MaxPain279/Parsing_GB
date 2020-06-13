@@ -61,7 +61,7 @@ def hh_ru(main_link, cnt_ctr):
                 vacancy_data['salary_currency'] = cur
                 pprint(vacancy_data)
                 vacancies = db.vacancy
-                vacancies.insert_one(vacancy_data)
+                vacancies.replace_one(vacancy_data, vacancy_data, upsert=True)
             except:
                 continue
 
